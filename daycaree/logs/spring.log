@@ -1,0 +1,7 @@
+2023-May-01 10:04:52.776 WARN  [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16h15m24s140ms993µs100ns).
+2023-May-01 10:42:26.374 DEBUG [SpringApplicationShutdownHook] o.s.b.a.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2023-May-01 10:42:26.441 DEBUG [SpringApplicationShutdownHook] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@553c7293, started on Wed Apr 26 13:45:31 EDT 2023
+2023-May-01 10:42:28.133 DEBUG [SpringApplicationShutdownHook] o.h.i.SessionFactoryImpl - HHH000031: Closing
+2023-May-01 10:42:28.238 DEBUG [SpringApplicationShutdownHook] o.h.t.s.TypeConfiguration$Scope - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@67d07678] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@7fd2123a]
+2023-May-01 10:42:28.271 DEBUG [SpringApplicationShutdownHook] o.h.s.i.AbstractServiceRegistryImpl - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+2023-May-01 10:42:28.389 DEBUG [SpringApplicationShutdownHook] o.h.b.r.i.BootstrapServiceRegistryImpl - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
