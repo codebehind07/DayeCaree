@@ -92,18 +92,55 @@ public class Login {
 
                 System.out.println("Enter Here");
                 //This For Encryption fo Password
-
-
-                if (resp == null || resp.getUsername() == "")
+                
+                   if (resp == null || resp.getUsername() == "" )
                 {
-                    System.out.println("Enter Here");
-                    System.out.println("get Password"+ _Lg.getPassword());
-
                     model.addAttribute("UserLogin", new UserLogin());
                     model.addAttribute("Error", "Invalid User ! Pls Try Again ! ");
-                    return "/Login";
+                    System.out.println("Count" + "loginAttempt");
+                    // Number Of Login Count
 
-                }
+                    int loginAttempt;
+                    if (session.getAttribute("loginCount") == null)
+                    {
+                        session.setAttribute("loginCount", 0);
+                        loginAttempt = 0;
+                    }
+                    else
+                    {
+                        loginAttempt = (Integer) session.getAttribute("loginCount");
+                    }
+
+                    System.out.println("Enter Paas" + loginAttempt);
+                    if (loginAttempt >3)
+                    {
+
+                        long lastAccessedTime = session.getLastAccessedTime();
+                        Date date = new Date();
+                        long currentTime = date.getTime();
+                        long timeDiff = currentTime - lastAccessedTime;
+                        // 20 minutes in milliseconds
+                        if (timeDiff >= 1200000)
+                        {
+                            //invalidate user session, so they can try again
+                            session.invalidate();
+                        }
+                        else
+                        {
+                            // Error message
+                            model.addAttribute("Email","You have exceeded the 3 failed login attempt. Please try loggin in in 20 minutes, or call our customer service center at 1-800 555-1212.");
+                        }
+
+                        model.addAttribute("Email", "Please check your email for password reset");
+                        return "/Login";
+                    }
+                    else
+
+                    {
+                        loginAttempt++;
+                        int allowLogin = 3-loginAttempt;
+                        model.addAttribute("message","loginAttempt= "+loginAttempt+". Invalid username or password. You have "+allowLogin+" attempts remaining. Please try again! <br>Not a registered cusomer? Please <a href=\"register.jsp\">register</a>!");
+                    }
 
                boolean Valid = _ut.verifyUserPassword(_Lg.getPassword(),resp.getPassword(),resp.getSeckey());
                // System.out.println("Valid" + Valid);
