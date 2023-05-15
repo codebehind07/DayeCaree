@@ -84,8 +84,8 @@ public class Login {
                 System.out.println("Pass" + Pass);
                 String Salt = _ut.getSalt(30);
                 _Lg.setPassword(_ut.generateSecurePassword(Pass,Salt));
-               // Users resp = _us.Login(_Lg.getUsername(), _Lg.getPassword());
-                Users resp = _us.Logins(_Lg.getUsername());
+                Users resp = _us.Login(_Lg.getUsername(), _Lg.getPassword());
+                //Users resp = _us.Logins(_Lg.getUsername());
                 System.out.println("Real Pass"+ Pass);
                 System.out.println("Enc Pass"+ _Lg.getPassword());
                 System.out.println("Salt"+ Salt);
@@ -105,7 +105,7 @@ public class Login {
 
                 }
 
-              // boolean Valid = _ut.verifyUserPassword(_Lg.getPassword(),resp.getPassword(),resp.getSeckey());
+               boolean Valid = _ut.verifyUserPassword(_Lg.getPassword(),resp.getPassword(),resp.getSeckey());
                // System.out.println("Valid" + Valid);
                 System.out.println("Enter Paas" + _Lg.getPassword());
                 System.out.println("Password Enc" + resp.getPassword());
